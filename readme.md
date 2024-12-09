@@ -2,6 +2,36 @@
 
 Welcome to the Event Manager Company! As a newly hired Software QA Analyst/Developer and a student in software engineering, you are embarking on an exciting journey to contribute to our project aimed at developing a secure, robust REST API that supports JWT token-based OAuth2 authentication. This API serves as the backbone of our user management system and will eventually expand to include features for event management and registration.
 
+## Learning Experience as QA Analyst
+
+This assignment gave me a good learning experience by allowing me to indulge into technical aspects as a QA analyst and get know about the collabarative workflows. I had gone through areas like API degugging, design, testing and workflow management. As a QA analyst I have investigated the failed test cases by running pytest and got insight about what are the project dependencies and architecture.
+
+While fixing these issues i worked on how to give a good fix without breaking the existing functionality and the process of associating a commit to the issue have made me learn how we can easily navigate through issues and get to know what fix was given to a particular issue to work on it if the same was araised in future. overall this experience has given me the well rounded perspective on how to manager both technical challenges and teamwork.
+
+## Issues Addressed.
+
+There are 5 issues i have addressed in this assignment and 1 enhancement i have tried doing they are mentioned below.
+
+### Issues
+[Tokens missing for user, manager and admin](https://github.com/pendekantiakhil/event_manager/issues/6)
+
+[ValidationError on uuid](https://github.com/pendekantiakhil/event_manager/issues/5)
+
+[ValidationError for the email attribute on the LoginRequest api](https://github.com/pendekantiakhil/event_manager/issues/4)
+
+[Nickname and firstname KeyErrors on the pytest test cases](https://github.com/pendekantiakhil/event_manager/issues/2)
+
+[Pytest Errors stating SMTP Server Disconnected while mail is trigerred](https://github.com/pendekantiakhil/event_manager/issues/1)
+
+### Enhancement
+[Add Password validation and email validation on the code.](https://github.com/pendekantiakhil/event_manager/issues/3)
+
+## Docker Hub Link
+
+Use the below link to check the docker hub push
+
+[Event_Manager_Project](https://hub.docker.com/repository/docker/vp679/event_manager/general)
+
 ## Assignment Objectives
 
 1. **Familiarize with REST API functionality and structure**: Gain hands-on experience working with a REST API, understanding its endpoints, request/response formats, and authentication mechanisms.
