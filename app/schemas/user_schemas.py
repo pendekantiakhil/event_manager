@@ -13,6 +13,28 @@ class UserRole(str, Enum):
     AUTHENTICATED = "AUTHENTICATED"
     MANAGER = "MANAGER"
     ADMIN = "ADMIN"
+    
+def validate_password(password: Optional[str]) -> Optional[str]:
+    if password is None:
+        raise ValueError("Password cannot be empty")
+    
+    min_length = 8
+    if len(password) < min_length:
+        raise ValueError(f"Password must be at least {min_length} characters long")
+    
+    if not re.search(r'[A-Z]', password):
+        raise ValueError("Password must contain at least one uppercase letter")
+    
+    if not re.search(r'[a-z]', password):
+        raise ValueError("Password must contain at least one lowercase letter")
+    
+    if not re.search(r'\d', password):
+        raise ValueError("Password must contain at least one digit")
+    
+    if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+        raise ValueError("Password must contain at least one special character")
+    
+    return password
 
 def validate_url(url: Optional[str]) -> Optional[str]:
     if url is None:
@@ -21,6 +43,7 @@ def validate_url(url: Optional[str]) -> Optional[str]:
     if not re.match(url_regex, url):
         raise ValueError('Invalid URL format')
     return url
+
 def validate_email(email: Optional[str]) -> Optional[str]:
     if email is None:
         return email
@@ -50,6 +73,7 @@ class UserCreate(UserBase):
     email: EmailStr = Field(..., example="john.doe@example.com")
     password: str = Field(..., example="Secure*1234")
     _validate_emails = validator('email',pre=True,allow_reuse=True)(validate_email)
+    _validate_password = validator('password',pre=True,allow_reuse=True)(validate_password)
 
 class UserUpdate(UserBase):
     email: Optional[EmailStr] = Field(None, example="john.doe@example.com")
@@ -82,6 +106,7 @@ class LoginRequest(BaseModel):
     email: str = Field(..., example="john.doe@example.com")
     password: str = Field(..., example="Secure*1234")
     _validate_emails = validator('email',pre=True,allow_reuse=True)(validate_email)
+    _validate_password = validator('password',pre=True,allow_reuse=True)(validate_password)
 
 class ErrorResponse(BaseModel):
     error: str = Field(..., example="Not Found")
